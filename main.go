@@ -3,6 +3,7 @@ package main
 import (
     "github.com/gofiber/fiber/v2"
     "log"
+    "github.com/jbc2313/goRESTapi/db"
 
 )
 
@@ -12,6 +13,7 @@ func helloWorld(c *fiber.Ctx) error {
 }
 
 func main() {
+    db.ConnectDb()
     app := fiber.New()
 
     app.Get("/", helloWorld)

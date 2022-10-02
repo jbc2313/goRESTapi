@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/jbc2313/goRESTapi/models"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -27,6 +28,7 @@ func ConnectDb() {
     db.Logger = logger.Default.LogMode(logger.Info)
     log.Println("Running Migrations")
     // Add migrations
+    db.AutoMigrate(&models.User{}, &models.Item{})
 
     Database = DbInstance{Db: db}
 }
