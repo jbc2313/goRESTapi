@@ -51,6 +51,24 @@ func findUser(id int, user *models.User) error {
     return nil
 }
 
+func GetUser(c *fiber.Ctx) error {
+    id, err := c.ParamsInt("id")
+
+    var user models.User
+
+    if err != nil {
+        return c.Status(400).JSON(err.Error())
+    }
+
+    if err := findUser(id, &user); err != nil {
+        return c.Status(400).JSON(err.Error())
+    }
+
+    responseUser := CreateResponseUser(user)
+
+    return c.Status(200).JSON(responseUser)
+
+}
 
 func UpdateUser(c *fiber.Ctx) error {
     id, err := c.ParamsInt("id")
