@@ -18,6 +18,10 @@ func setupUserRoutes(app *fiber.App) {
     app.Get("/users", routes.GetUsers)
     app.Post("/users", routes.CreateUser)
     app.Get("/users/:id", routes.GetUser)
+    //Item routes
+    app.Get("/items", routes.GetItems)
+    app.Post("/items", routes.CreateItem)
+    app.Get("/items/:id", routes.GetItem)
 
 }
 
